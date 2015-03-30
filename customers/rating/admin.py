@@ -1,3 +1,4 @@
 from django.contrib import admin
+from rating.models import CustomerRating
 
-# Register your models here.
+admin.site.register(CustomerRating)
