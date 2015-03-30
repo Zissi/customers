@@ -1,10 +1,10 @@
 from django.shortcuts import render
 from django.views import generic
 from django.views.generic.edit import CreateView, UpdateView
-from django.core.urlresolvers import reverse
-from rating.models import CustomerRating
 from django.core.mail import EmailMessage
 from django.http import HttpResponse
+
+from rating.models import CustomerRating
 from .forms import MailForm
 
 class CustomerView(generic.ListView):
@@ -30,13 +30,13 @@ def send_email(subject, text, email):
     email = EmailMessage(subject, text, to=[email])
     email.send()
 
-def write_email(request):
+def write_email(request, pk):
     if request.method == 'POST':
         form = MailForm(request.POST)
         if form.is_valid():
             subject = form.cleaned_data['subject']
             text = form.cleaned_data['text']
-            customer = CustomerRating.objects.get(id=1)
+            customer = CustomerRating.objects.get(id=pk)
             email = customer.email
             send_email(subject, text, email)
             return HttpResponse('E-mail successfully sent :)')
