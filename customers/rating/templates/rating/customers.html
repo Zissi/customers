@@ -1,7 +1,14 @@
+<html>
+
+<head> <title> Customers </title> 
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+</head>
+
 {% if customers %}
     <ul>
     {% for customer in customers %}
-        <li>{{customer}} {{customer.email}} {{customer.rating}} {{customer.contacted}}</li>
+        <li><a href = "{%url 'rating:update_customer' pk=customer.pk %}" > {{customer}} {{customer.email}} {{customer.rating}} {{customer.contacted}}</a></li>
     {% endfor %}
     </ul>
 {% else %}
@@ -9,3 +16,5 @@
 {% endif %}
 
 <a href="{% url 'rating:new_customer' %}"> New customer </a>
+
+</html>
