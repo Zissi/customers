@@ -1,9 +1,11 @@
 {% if customers %}
     <ul>
     {% for customer in customers %}
-        <li>{{customer}}</li>
+        <li>{{customer}} {{customer.email}} {{customer.rating}} {{customer.contacted}}</li>
     {% endfor %}
     </ul>
 {% else %}
     <p>No customers are available.</p>
 {% endif %}
+
+<a href="{% url 'rating:new_customer' %}"> New customer </a>
