@@ -1,0 +1,9 @@
+{% if customers %}
+    <ul>
+    {% for customer in customers %}
+        <li>{{customer}}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No customers are available.</p>
+{% endif %}
